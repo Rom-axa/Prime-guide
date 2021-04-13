@@ -1,0 +1,8 @@
+/node_modules/
+/.nuxt/
+/dist
+package-lock.json
+.env
+/assets
+/static
+/locales
