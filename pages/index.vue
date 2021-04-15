@@ -59,7 +59,7 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="display-3">
-                                            <img src="~assets/img/accept.png" alt="accept" style="width: 4rem">
+                                            <img src="~assets/img/accept.png" alt="accept" style="width: 4rem; height: 4rem;">
                                             <!-- fix later -->
                                         </div>
                                         <h5 class="card-title">
@@ -82,7 +82,7 @@
                         <div class="row">
                             <div class="col-11 col-md-6 offset-0">
                                 <div class="card step-card step-card-right" data-step-number="1">
-                                    <img src="~assets/img/send_photo.png" class="card-img-top m-auto" alt="photo" style="width:100px!important">
+                                    <img src="~assets/img/send_photo.svg" class="card-img-top m-auto" alt="photo" style="height:200px!important">
 
                                     <div class="card-body">
                                         <h5 class="card-title">
@@ -96,7 +96,7 @@
                             </div>
                             <div class="col-11 col-md-6 offset-1 offset-md-6 mt-1">
                                 <div class="card step-card step-card-left" data-step-number="2">
-                                    <img src="~assets/img/complite_list.png" class="card-img-top m-auto" alt="photo" style="width:100px!important">
+                                    <img src="~assets/img/complite_list.svg" class="card-img-top m-auto" alt="photo" style="height:200px!important">
 
                                     <div class="card-body">
                                         <h5 class="card-title">
@@ -133,7 +133,7 @@
                             </div>
                             <div class="col-11 col-md-6 offset-0 mt-1">
                                 <div class="card step-card step-card-right" data-step-number="3">
-                                    <img src="~assets/img/receive_mail.png" class="card-img-top m-auto" alt="photo" style="width:100px!important">
+                                    <img src="~assets/img/receive_mail.svg" class="card-img-top m-auto" alt="photo" style="height:200px!important">
 
                                     <div class="card-body">
                                         <h5 class="card-title">
@@ -147,7 +147,7 @@
                             </div>
                             <div class="col-11 col-md-6 offset-1 offset-md-6 mt-1">
                                 <div class="card step-card step-card-left" data-step-number="4">
-                                    <img src="~assets/img/pay.png" class="card-img-top m-auto" alt="photo" style="width:100px!important">
+                                    <img src="~assets/img/pay.svg" class="card-img-top m-auto" alt="photo" style="height:200px!important">
 
                                     <div class="card-body">
                                         <h5 class="card-title">
@@ -161,7 +161,7 @@
                             </div>
                             <div class="col-11 col-md-6 offset-0 mt-1">
                                 <div class="card step-card step-card-right" data-step-number="5">
-                                    <img src="~assets/img/receive_post.png" class="card-img-top m-auto" alt="photo" style="width:100px!important">
+                                    <img src="~assets/img/receive_post.svg" class="card-img-top m-auto" alt="photo" style="height:200px!important">
 
                                     <div class="card-body">
                                         <h5 class="card-title">
@@ -357,7 +357,9 @@ export default {
         };
     },
     mounted(){
-        this.$initGoogleMap(this.$refs.map);
+        setTimeout(() => {
+            this.$initGoogleMap(this.$refs.map);
+        }, 4000);
         
         const anim = (el, val, i = 0) => {
             let time = 75;
@@ -383,15 +385,22 @@ export default {
             }, time);
         };
 
-        window.addEventListener("scroll", () => {
+        const scrollHandler = () => {
             if (!this.animated){
                 if (this.$refs.clientsQty && this.$refs.years) {
                     anim(this.$refs.clientsQty, parseInt(this.$refs.clientsQty.innerText.trim(), 10));
                     anim(this.$refs.years,  parseInt(this.$refs.years.innerText.trim(), 10));
                 }
+                window.removeEventListener("scroll", scrollHandler);
                 this.animated = true;
             }
-        })
+        };
+
+        window.addEventListener(
+            "scroll", 
+            scrollHandler,
+            { passive: true } 
+        );
     },
     head(){
         return {
@@ -452,6 +461,7 @@ $main-img-url : "~assets/img/main_bw.jpg";
     &.step-card-left:after {
         left: -6rem;
     }
+    border: none!important;
 }
 
 @include media-breakpoint-down(md) {

@@ -37,6 +37,6 @@ export default ({ env }, inject) => {
     
     const script = window.document.createElement("script");
     script.src = `https://maps.googleapis.com/maps/api/js?key=${env.googleKey}&callback=downloadedGoogleMapsScript`;
-    script.async = "true";
+    script.defer = "true";
     window.document.body.appendChild(document.body.appendChild(script));
 }

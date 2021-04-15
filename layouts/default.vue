@@ -11,8 +11,6 @@
 			© prime-guide.com 2018 all rights are reserved
 		</footer>
 		<pdf-file-modal ref="pdfFileModal" :files="pdfFiles"></pdf-file-modal>
-		<!-- <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCKNKZHCTlV0UoVjiB2rqHyjaGjv3aSU5Q&callback=downloadedGoogleMapsScript">
-		</script> -->
 	</div>
 </template>
 

@@ -2,7 +2,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid">
             <nuxt-link :to="localePath('/')">
-                <img class="navbar-brand logo px-4" src="~assets/img/logo.png" alt="Prime Guide">
+                <img class="navbar-brand logo px-4" src="~assets/img/logo.png" style="height: 60px;width: 120px" alt="Prime Guide">
             </nuxt-link>
             
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-main-menu" aria-controls="navbar-main-menu" aria-expanded="false" aria-label="Toggle navigation">
