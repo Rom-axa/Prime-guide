@@ -1,4 +1,5 @@
 const webpack = require('webpack');
+const path = require('path');
 
 export default {
     ssr: false, // Disable Server Side rendering
@@ -51,6 +52,12 @@ export default {
             },
         ],
     },
+    manifest: {
+        name: 'prime guide',
+        short_name: 'Pg',
+        lang: 'ua',
+        display: 'standalone',
+    },
     plugins : [
         '@/plugins/google.maps.js',
         '@/plugins/bootstrap.js',
@@ -58,7 +65,8 @@ export default {
     ],
     server: {
         port: 3000,
-        host: '192.168.0.104',
+        // host: '192.168.0.104',
+        host : 'localhost',
         timing: false
     },
     modules : [
@@ -71,6 +79,7 @@ export default {
             defaultLocale: 'ua',
             langDir : '~/locales/'
         }],
+        '@nuxtjs/pwa',
     ],
     build : {
         plugins: [
@@ -88,6 +97,12 @@ export default {
             // Overwrite the test regex and add `pdf`
             assetsLoader.test = /\.(png|jpe?g|gif|svg|webp|pdf)$/i;
       
+            // config.module.rules.push({
+            //     test: /\.md$/,
+            //     loader: 'frontmatter-markdown-loader',
+            //     include: path.resolve(__dirname, 'contents'),
+            // })
+              
             return config;
         },
     },
