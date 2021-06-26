@@ -6,6 +6,35 @@
 		<div>
 			<Nuxt />
 		</div>
+		<div class="row py-5 contacts-wrap mx-0">
+			<div class="col-6 d-flex justify-content-center">
+				<div ref="map" style="width: 350px; height: 250px"></div>
+			</div>
+			<div class="col-6">
+				<h3 class="display-5" id="contacts">
+					{{ $t("contacts.title") }}
+				</h3>
+				<div>
+					<br>
+					<span>
+						{{ $t("contacts.adress") }}
+					</span>
+					<br>
+					<span>
+						{{ $t("contacts.phone") }}: +380664387722 (Viber)
+					</span>
+					<br>
+					<span>
+						E-mail: unona-office@urk.net
+					</span>
+					<br>
+					<span>
+						{{ $t("contacts.see_also") }}
+						<a class="link-light" href="//translate-nikopol.com.ua/" target="_blank">translate-nikopol.com.ua/</a>
+					</span>
+				</div>
+			</div>
+		</div>
 		<footer>
 			<go-top bg-color="#296a54"></go-top>
 			© prime-guide.com 2018 all rights are reserved
@@ -39,6 +68,11 @@ export default {
             this.$refs.pdfFileModal.showFile(this.pdfFiles.find(pdfFIle => pdfFIle.name === pdfFileName))
         });
 	},
+	mounted(){
+        setTimeout(() => {
+            this.$initGoogleMap(this.$refs.map);
+        }, 4000);
+	}
 }
 </script>
 
@@ -49,5 +83,10 @@ footer {
 	background-color: $app-main-color;
 	color: $app-light-color;
 	text-align: center;
+}
+
+.contacts-wrap {
+    background-color: $app-dark-color;
+    color : $app-light-color;
 }
 </style>

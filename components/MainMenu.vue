@@ -11,7 +11,8 @@
             <div class="collapse navbar-collapse" id="navbar-main-menu">
                 <div class="navbar-wrap">
                     <div class="navbar-nav">
-                        <nuxt-link class="nav-link big-link" :to="localePath('/#steps')">{{ $t("menu.first_item") }}</nuxt-link >
+                        <nuxt-link class="nav-link big-link" :to="localePath('/')">{{ $t("menu.first_item") }}</nuxt-link>
+                        <nuxt-link class="nav-link big-link" :to="localePath('/reviews')">{{ $t("menu.second_item") }}</nuxt-link>
                     </div>
                     <div class="navbar-nav">
                         <div class="dropdown">
@@ -51,6 +52,10 @@ export default {
     cursor: pointer;
 }
 
+a.nuxt-link-exact-active {
+    color: #ffffff!important;
+}
+
 .navbar {
     // background-color: $app-dark-color!important;
     background-color: $app-main-color!important;
@@ -66,7 +71,7 @@ export default {
 
 .big-link {
     font-size: 2rem;
-    color: rgba(255, 255, 255, 0.75)!important;
+    color: rgba(255, 255, 255, 0.75);
 }
 
 .dropdown {

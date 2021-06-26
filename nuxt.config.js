@@ -7,6 +7,7 @@ export default {
         officeLocationLat : process.env.OFFICE_LOCATION_LAT,
         officeLocationLng : process.env.OFFICE_LOCATION_LNG,
         googleKey : process.env.GOOGLE_KEY,
+        apiURL: process.env.NODE_ENV === 'production' ? `${process.env.BASE_URL}/api` : process.env.API_DEV_URL
     },
     analyze: {
         analyzerMode: 'static'
@@ -55,22 +56,32 @@ export default {
         '@/plugins/google.maps.js',
         '@/plugins/bootstrap.js',
         '@/plugins/event-bus.js',
+        '@/plugins/api.js',
+        '@/plugins/moment.js',
+        '@/plugins/i18n.js',
+        '@/plugins/element-ui.js'
     ],
     server: {
         port: 3000,
-        host: '192.168.0.104',
+        host: '192.168.0.105',
         timing: false
     },
     modules : [
         ['nuxt-i18n',
         {
             locales: [
-                { code: 'ua', file: 'ua.json', dir: 'ltr' },
-                { code: 'ru', file: 'ru.json', dir: 'ltr' }
+                { code: 'ua', file: 'ua.json', dir: 'ltr', moment : "uk" },
+                { code: 'ru', file: 'ru.json', dir: 'ltr', moment : "ru" }
             ],
             defaultLocale: 'ua',
             langDir : '~/locales/'
         }],
+        ['@nuxtjs/axios', {
+            
+        }],
+        ['vue-sweetalert2/nuxt', {
+
+        }]
     ],
     build : {
         plugins: [

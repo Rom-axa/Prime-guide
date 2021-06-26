@@ -3,6 +3,8 @@
 @import "@/node_modules/bootstrap/scss/variables";
 @import "@/scss/var.scss";
 @import "@/node_modules/bootstrap/scss/bootstrap.scss";
+@import "@/node_modules/element-ui/lib/theme-chalk/pagination.css";
+@import "@/node_modules/element-ui/lib/theme-chalk/icon.css";
 
 @font-face {
     font-family: "Helvetica Now Display";
@@ -17,4 +19,18 @@
 
 body {
     font-family: Arial, Helvetica, sans-serif;
+}
+.el-pagination {
+    ul.el-pager {
+        li.active {
+            background-color: $app-main-color!important;
+            color: $app-light-color!important;
+        }
+    }
+    ul.el-pager > li.number, button {
+        width: 3rem!important;
+        height: 3rem!important;
+        font-size: 1.5rem!important;
+        padding: 0.75rem;
+    }
 }
