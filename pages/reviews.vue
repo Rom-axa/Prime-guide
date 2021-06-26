@@ -79,7 +79,8 @@ export default {
         create({ title, content, userName }){
             this.creating = true;
 
-            this.createReview({ title, content, userName })
+            this.$grecaptchSendAction("create_review")
+                .then(rcaptchaToken => this.createReview({ title, content, userName, rcaptchaToken }))
                 .then(() => this.$refs.form.reset())
                 .then(() => {
                     this.$swal.fire({

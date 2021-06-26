@@ -7,7 +7,8 @@ export default {
         officeLocationLat : process.env.OFFICE_LOCATION_LAT,
         officeLocationLng : process.env.OFFICE_LOCATION_LNG,
         googleKey : process.env.GOOGLE_KEY,
-        apiURL: process.env.NODE_ENV === 'production' ? `${process.env.BASE_URL}/api` : process.env.API_DEV_URL
+        apiURL: process.env.NODE_ENV === 'production' ? `${process.env.BASE_URL}/api` : process.env.API_DEV_URL,
+        googleRecaptchaKey : process.env.GOOGLE_RECAPTHCA_KEY,
     },
     analyze: {
         analyzerMode: 'static'
@@ -59,7 +60,8 @@ export default {
         '@/plugins/api.js',
         '@/plugins/moment.js',
         '@/plugins/i18n.js',
-        '@/plugins/element-ui.js'
+        '@/plugins/element-ui.js',
+        '@/plugins/google.recaptcha.js'
     ],
     server: {
         port: 3000,

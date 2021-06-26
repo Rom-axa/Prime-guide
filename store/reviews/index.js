@@ -43,11 +43,12 @@ export const actions = {
             .then(reviews => reviews.filter(review => !!review))
             .then(reviews => commit("setReviews", reviews));
     },
-    createReview({}, { title, content, userName }){
+    createReview({}, { title, content, userName, rcaptchaToken }){
         const formData = new FormData();
         formData.append("title", title);
         formData.append("content", content);
         formData.append("user_name", userName);
+        formData.append("rcaptcha_token", rcaptchaToken);
 
         return this.$api.post("/reviews", formData)
             .then(response => response.data);
