@@ -1,45 +1,17 @@
 <template>
 	<div>
 		<header>
-	        <main-menu></main-menu>
+	        <main-menu />
 		</header>
 		<div>
 			<Nuxt />
 		</div>
-		<div class="row py-5 contacts-wrap mx-0">
-			<div class="col-6 d-flex justify-content-center">
-				<div ref="map" style="width: 350px; height: 250px"></div>
-			</div>
-			<div class="col-6">
-				<h3 class="display-5" id="contacts">
-					{{ $t("contacts.title") }}
-				</h3>
-				<div>
-					<br>
-					<span>
-						{{ $t("contacts.adress") }}
-					</span>
-					<br>
-					<span>
-						{{ $t("contacts.phone") }}: +380664387722 (Viber)
-					</span>
-					<br>
-					<span>
-						E-mail: unona-office@urk.net
-					</span>
-					<br>
-					<span>
-						{{ $t("contacts.see_also") }}
-						<a class="link-light" href="//translate-nikopol.com.ua/" target="_blank">translate-nikopol.com.ua/</a>
-					</span>
-				</div>
-			</div>
-		</div>
+		<footer-common-info />
 		<footer>
 			<go-top bg-color="#296a54"></go-top>
 			© prime-guide.com 2018 all rights are reserved
 		</footer>
-		<pdf-file-modal ref="pdfFileModal" :files="pdfFiles"></pdf-file-modal>
+		<pdf-file-modal ref="pdfFileModal" :files="pdfFiles" />
 	</div>
 </template>
 
@@ -47,14 +19,22 @@
 import "@/scss/app.scss";
 import MainMenu from "@/components/MainMenu.vue";
 import PdfFileModal from "@/components/PdfFileModal.vue";
+import FooterCommonInfo from "@/components/FooterCommonInfo.vue";
 import GoTop from '@/components/GoTop.vue';
 import PdfFile from "@/classes/PdfFile.js"
 
 export default {
+	middleware({}) {
+		if (window.location.protocol !== "https:" && process.env.NODE_ENV === "production") {
+			location.replace(`https:${location.href.substring(location.protocol.length)}`);
+			return;
+		}
+    },
     components : {
         MainMenu,
 		GoTop,
-		PdfFileModal
+		PdfFileModal,
+		FooterCommonInfo
     },
 	data(){
 		return {
@@ -68,11 +48,6 @@ export default {
             this.$refs.pdfFileModal.showFile(this.pdfFiles.find(pdfFIle => pdfFIle.name === pdfFileName))
         });
 	},
-	mounted(){
-        setTimeout(() => {
-            this.$initGoogleMap(this.$refs.map);
-        }, 4000);
-	}
 }
 </script>
 

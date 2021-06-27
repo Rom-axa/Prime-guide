@@ -43,8 +43,8 @@ export default {
 
 <style lang="scss" scoped>
 .scroll-top-btn {
-    width: 70px;
-    height: 70px;
+    width: 50px;
+    height: 50px;
     right: 50px;
     position: fixed;
     bottom: calc(100px);

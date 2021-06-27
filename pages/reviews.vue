@@ -1,8 +1,13 @@
 <template>
     <main>
         <section>
-            <h1 class="text-center display-5 my-5">{{ $t('reviews.title') }}</h1>
             <div class="container-fluid mb-5">
+                <div class="row">
+                    <div class="col-12 col-sm-10 col-md-8 col-lg-6 offset-0 offset-sm-1 offset-md-2 offset-lg-3 text-center">
+                        <img src="~assets/img/review6.png" alt="" width="auto" style="height: auto;max-height: 450px;max-width: 80%;">
+                    </div>
+                </div>
+                <h1 class="text-center display-5 my-5">{{ $t('reviews.title') }}</h1>
                 <div class="row py-2" v-if="fetching">
                     <div class="col-12 col-sm-10 col-md-8 col-lg-6 offset-0 offset-sm-1 offset-md-2 offset-lg-3 text-center">
                         <div class="spinner-border text-success" style="width: 7rem; height: 7rem;" role="status">
@@ -17,6 +22,13 @@
                         </div>
                     </div>
                 </template>
+                <div class="row" v-if="!fetching && !reviews.length">
+                    <div class="col-12 col-sm-10 col-md-8 col-lg-6 offset-0 offset-sm-1 offset-md-2 offset-lg-3">
+                        <h3 class="text-center">
+                            {{ $t("reviews.no_rows") }}
+                        </h3>
+                    </div>
+                </div>
                 <div class="row my-5" v-if="reviewsTotal > reviwsPackageSize">
                     <div class="col-12 col-sm-10 col-md-8 col-lg-6 offset-0 offset-sm-1 offset-md-2 offset-lg-3 text-center">
                         <el-pagination
@@ -113,6 +125,10 @@ export default {
 <style lang="scss" scoped>
 @import "@/scss/app.scss";
 
+#ss {
+    background-image: url(~assets/img/review6.png);
+    background-size: cover;
+}
 .emphisized {
     background-color : $app-main-opacity-color;
 }

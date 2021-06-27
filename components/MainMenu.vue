@@ -15,19 +15,22 @@
                         <nuxt-link class="nav-link big-link" :to="localePath('/reviews')">{{ $t("menu.second_item") }}</nuxt-link>
                     </div>
                     <div class="navbar-nav">
-                        <div class="dropdown">
-                            <button ref="lang" class="btn btn-secondary dropdown-toggle p-0 m-0 h-100 border-0" type="button" id="drop-down-menu" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img class="m-0 m-0 p-0 h-100 border-0 lang-img" :src="require(`@/assets/img/${$i18n.locale}_rs.png`)" alt="ua">
+                        <div class="dropdown d-flex align-items-center">
+                            <button ref="lang" class="btn btn-secondary dropdown-toggle m-0 border-0 d-flex justify-content-between bg-main" style="width: 10em;padding: 0 0.5em;" type="button" id="drop-down-menu" data-bs-toggle="dropdown" aria-expanded="false">
+                                <span>{{ $t(`menu.langs.${$i18n.locale}`) }}</span>
+                                <img class="m-0 m-0 p-0 border-0 lang-img ml-1" :src="require(`@/assets/img/${$i18n.locale}_rs.png`)" alt="ua">
                             </button>
-                            <ul class="dropdown-menu dropdown-menu-dark p-0 m-0" aria-labelledby="drop-down-menu">
-                                <li class="pointer">
-                                    <nuxt-link :to="switchLocalePath('ua')">
-                                        <img class="dropdown-item active m-0 my-1 p-0 lang-img" src="~assets/img/ua_rs.png" alt="ua">
+                            <ul class="dropdown-menu dropdown-menu-dark p-0 m-0 border-0" aria-labelledby="drop-down-menu">
+                                <li class="pointer bg-main py-1" style="width: 10em;padding: 0 0.5em;">
+                                    <nuxt-link :to="switchLocalePath('ua')" class="d-flex align-items-center justify-content-between text-white text-decoration-none">
+                                        <span>{{ $t(`menu.langs.ua`) }}</span>
+                                        <img class="dropdown-item active m-0 my-1 p-0 lang-img ml-1" src="~assets/img/ua_rs.png" alt="ua">
                                     </nuxt-link>
                                 </li>
-                                <li class="pointer">
-                                    <nuxt-link :to="switchLocalePath('ru')">
-                                        <img class="dropdown-item m-0 my-1 p-0 lang-img" src="~assets/img/ru_rs.png" alt="ru">
+                                <li class="pointer bg-main py-1" style="width: 10em;padding: 0 0.5em;">
+                                    <nuxt-link :to="switchLocalePath('ru')" class="d-flex align-items-center justify-content-between text-white text-decoration-none">
+                                        <span>{{ $t(`menu.langs.ru`) }}</span>
+                                        <img class="dropdown-item m-0 my-1 p-0 lang-img ml-1" src="~assets/img/ru_rs.png" alt="ru">
                                     </nuxt-link>
                                 </li>
                             </ul>
@@ -85,8 +88,12 @@ a.nuxt-link-exact-active {
 }
 
 .lang-img {
-    height: 3em;
+    height: 1.5em;
     width: auto;
+}
+
+.bg-main {
+    background-color: $app-main-color!important;
 }
 
 .dropdown-menu {
@@ -116,7 +123,7 @@ a.nuxt-link-exact-active {
     .navbar-wrap {
         flex-direction: column;
         padding-bottom: 1em;
-        align-items: flex-end;
+        align-items: flex-start;
     }
 }
 
